@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <title>FIXA FILE STORE</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="splash" class="splash">
+    <div class="splash-logo">F<span>✦</span></div>
+    <div class="loader"><i></i></div>
+    <h1>FIXA FILE STORE</h1><p>YOUR FILES. YOUR SPACE.</p>
+  </div>
+  <main id="app" class="app hidden">
+    <header class="topbar">
+      <div class="brand-mark">F<span>✦</span></div>
+      <div class="brand-title"><strong>FIXA</strong><span>FILE STORE</span></div>
+      <div class="header-spacer"></div>
+      <div id="user-pill" class="user-pill hidden"></div>
+      <button id="logout-btn" class="ghost-btn hidden">வெளியேறு</button>
+    </header>
+
+    <section id="config-view" class="config-card hidden">
+      <h1>Supabase அமைக்கவும்</h1>
+      <p>முதலில் உங்கள் Supabase Project URL மற்றும் <b>publishable/anon key</b> சேர்க்கவும். Secret / service_role key-ஐ இங்கே இடாதீர்கள்.</p>
+      <form id="config-form">
+        <label for="project-url">Supabase Project URL</label>
+        <input id="project-url" type="url" placeholder="https://xxxxxxxx.supabase.co" required>
+        <label for="anon-key">Supabase publishable key / anon key</label>
+        <textarea id="anon-key" rows="3" placeholder="sb_publishable_... அல்லது பழைய anon public key" required></textarea>
+        <button class="primary-btn" type="submit">இணைத்து தொடரவும் →</button>
+        <p class="muted">இந்த அமைப்பு உங்கள் தற்போதைய Browser-ல் மட்டும் சேமிக்கப்படும். வேறு சாதனங்களில் மீண்டும் உள்ளிட வேண்டும்.</p>
+      </form>
+    </section>
+
+    <section id="auth-view" class="auth-layout hidden">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> PRIVATE CLOUD LIBRARY</div>
+        <h1>உங்கள் கோப்புகள்.<br><em>உங்கள் தனி இடம்.</em></h1>
+        <p>ZIP, APK, PDF, படங்கள் மற்றும் ஆவணங்களை ஒரே தனிப்பட்ட கணக்கில் சேமியுங்கள்.</p>
+        <div class="feature-row"><span>✓</span> தனிப்பட்ட Storage <span>✓</span> எளிய Download</div>
+      </div>
+      <div class="auth-card">
+        <h2>Google மூலம் தொடரவும்</h2>
+        <p class="muted">உங்கள் Gmail / Google கணக்கைப் பயன்படுத்தி பாதுகாப்பாக உள்நுழையவும். முதல் முறை வந்தால் கணக்கு தானாக உருவாகும்.</p>
+        <button id="google-login" class="google-btn" type="button"><span class="google-g">G</span> Google மூலம் Login / Register</button>
+        <p id="auth-message" class="message" role="status"></p>
+        <p class="privacy-note">🔒 ஒவ்வொரு Google கணக்கும் தங்களது கோப்புகளை மட்டுமே பார்க்கும். வேறு கணக்கின் கோப்புகளைப் பார்க்க முடியாது.</p>
+      </div>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="dashboard-heading">
+        <div><div class="eyebrow"><span class="dot"></span> உங்கள் தனிப்பட்ட இடம்</div><h1>என் <em>கோப்புகள்</em></h1><p class="muted">Upload, Search, Download அல்லது Delete செய்யவும்.</p></div>
+        <div class="storage-badge"><span class="storage-icon">▤</span><div><strong id="file-count">0 கோப்புகள்</strong><small>உங்கள் Library-ல்</small></div></div>
+      </div>
+      <div id="drop-zone" class="drop-zone">
+        <input id="file-input" type="file" multiple hidden>
+        <div class="upload-icon">↑</div><h2>கோப்புகளை இங்கே விடவும்</h2><p>அல்லது உங்கள் சாதனத்திலிருந்து தேர்வு செய்யவும்</p>
+        <button id="choose-files" class="primary-btn small" type="button">கோப்புகளைத் தேர்வு செய்</button>
+        <small>ZIP · APK · PDF · Images · Documents · ஒவ்வொரு கோப்பும் அதிகபட்சம் 100 MB</small>
+      </div>
+      <div class="library-heading"><div><h2>File Library</h2><p class="muted">இந்தக் கணக்கின் கோப்புகள் மட்டுமே காட்டப்படும்.</p></div><input id="search" class="search" placeholder="கோப்புகளைத் தேடுங்கள்…" aria-label="Search files"></div>
+      <div id="file-list" class="file-list"></div>
+      <div id="empty-state" class="empty-state"><div class="empty-icon">▱</div><strong>இன்னும் கோப்புகள் இல்லை</strong><p>முதல் கோப்பை Upload செய்து தொடங்குங்கள்.</p></div>
+      <p id="dashboard-message" class="message" role="status"></p>
+    </section>
+    <footer>FIXA FILE STORE <span>•</span> உங்கள் டிஜிட்டல் கோப்புகளுக்கான தனி இடம்</footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
